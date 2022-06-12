@@ -2,12 +2,13 @@ version: "3"
 
 services:
   db:
+    container_name: ph3_db_dev
     build:
       context: ./db
     ports:
       - 3306:3306
     volumes:
-      - ./db/var/lib/mysql:/var/lib/mysql
+      - laravel_db:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=laravel
       - MYSQL_USER=laravel
@@ -15,12 +16,14 @@ services:
       - MYSQL_ROOT_PASSWORD=password
     platform: linux/x86_64
   app:
+    container_name: ph3_app_dev
     build:
       context: ./app
     volumes:
       - ../src:/work/backend
     depends_on: ["db"]
   web:
+    container_name: ph3_web_dev
     build:
       context: ./web
     ports:
@@ -28,3 +31,6 @@ services:
     volumes:
       - ../src:/work/backend
     depends_on: ["app"]
+
+volumes:
+  laravel_db:
