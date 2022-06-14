@@ -8,7 +8,7 @@
 </head>
 <body>
     @foreach ($datas as $data)
-        <div><a href="/quiz/{{$data['id']}}">{{$data['title']}}</a></div>
+        <div><a href="{{route('quiz.index', ['id' => $data['id']])}}">{{$data['title']}}</a></div>
     @endforeach
 </body>
 </html>

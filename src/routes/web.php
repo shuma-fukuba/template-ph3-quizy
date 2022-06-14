@@ -19,4 +19,4 @@ Route::get('/', function () {
 
 Route::get('/quiz', 'QuizController@index');
 
-Route::get('/quiz/{id}', 'QuizController@read_one');
+Route::get('/quiz/{id}', 'QuizController@read_one')->name('quiz.index');

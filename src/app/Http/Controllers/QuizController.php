@@ -25,7 +25,7 @@ class QuizController extends Controller
                         ],
                         [
                             'name' => 'たかなわ',
-                            'valid' => false,
+                            'valid' => true,
                         ],
                     ]
                 ],
@@ -82,7 +82,7 @@ class QuizController extends Controller
                         ],
                         [
                             'name' => 'たかなわ',
-                            'valid' => false,
+                            'valid' => true,
                         ],
                     ]
                 ],
