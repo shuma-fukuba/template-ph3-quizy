@@ -127,8 +127,8 @@ class QuizController extends Controller
     public function index()
     {
         $datas = [
-            ['id' => 1, 'title' => 'ガチで東京の人しか解けない！#東京の難読地名クイズ'],
-            ['id' => 2, 'title' => '広島県民なら解けて同然? #広島県の難読地名クイズ']
+            ['id' => 1, 'title' => ''],
+            ['id' => 2, 'title' => '']
         ];
         return view('quizes', ['datas' => $datas]);
     }
