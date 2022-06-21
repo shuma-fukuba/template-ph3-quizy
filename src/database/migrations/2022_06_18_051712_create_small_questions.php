@@ -17,6 +17,7 @@ class CreateSmallQuestions extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('big_question_id');
+            $table->string('image');
             $table->timestamps();
         });
     }
