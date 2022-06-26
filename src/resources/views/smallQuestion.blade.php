@@ -64,10 +64,9 @@
                 @foreach ($items as $quiz)
                 <section class="quiz">
                     <h1>この地名はなんて読む?</h1>
-                    {{-- <img src="{{asset('img/takanawa.png')}}" alt="{{$quiz['name']}}"> --}}
+                    <img src="{{asset('img/' . $quiz['image'])}}" alt="{{$quiz['name']}}">
                     <ul class ="choices">
                         @foreach ($quiz['choices'] as $choice)
-                        {{-- <p>{{$choice['name']}}</p> --}}
                         <li class="choice">{{$choice['name']}}</li>
                         @endforeach
                     </ul>

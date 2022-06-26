@@ -12,6 +12,6 @@ class SmallQuestion extends Model
     }
 
     public function choices() {
-        return $this->hasMany('App\Choices');
+        return $this->hasMany('App\Choice');
     }
 }
