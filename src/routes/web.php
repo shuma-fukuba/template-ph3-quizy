@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/quiz', 'QuizController@index');
+Route::get('/quiz', 'BigQuestionController@index');
 
-Route::get('/quiz/{id}', 'QuizController@read_one')->name('quiz.index');
+Route::get('/quiz/{id}', 'SmallQuestionController@index')->name('quiz.index');
