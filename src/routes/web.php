@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/quiz', 'BigQuestionController@index');
 
 Route::get('/quiz/{id}', 'SmallQuestionController@index')->name('quiz.index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
