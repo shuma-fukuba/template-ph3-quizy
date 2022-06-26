@@ -30,6 +30,9 @@ services:
       - 80:80
     volumes:
       - ./src:/work/backend
+      - ./docker/web/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - ./src/public:/var/www/html/laravel/public
+      - ./src/storage:/var/www/html/laravel/public/storage
     depends_on: ["app"]
 
 volumes:
