@@ -13,14 +13,14 @@ class BigQuestionSeeder extends Seeder
     public function run()
     {
         //
-        $param = [
-            'name' => 'ガチで東京の人しか解けない！#東京の難読地名クイズ'
+        $params = [
+            [
+                'name' => 'ガチで東京の人しか解けない！#東京の難読地名クイズ'
+            ],
+            [
+                'name' => '広島県民なら解けて同然? #広島県の難読地名クイズ'
+            ]
         ];
-        DB::table('big_questions')->insert($param);
-
-        $param = [
-            'name' => '広島県民なら解けて同然? #広島県の難読地名クイズ'
-        ];
-        DB::table('big_questions')->insert($param);
+        DB::table('big_questions')->insert($params);
     }
 }

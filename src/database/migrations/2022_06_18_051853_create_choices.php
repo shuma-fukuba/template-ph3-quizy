@@ -17,7 +17,7 @@ class CreateChoices extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('small_question_id');
-            $table->boolean('valid', );
+            $table->boolean('valid');
             $table->timestamps();
 
             $table->foreign('small_question_id')->references('id')->on('small_questions');

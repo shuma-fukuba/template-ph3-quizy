@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class SmallQuestionController extends Controller
 {
-    //
     public function index(Request $request) {
         $id = $request->id;
         $title = BigQuestion::find($id)->name;

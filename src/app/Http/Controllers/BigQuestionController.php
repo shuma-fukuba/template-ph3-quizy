@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 
 class BigQuestionController extends Controller
 {
-    //
-    public function index(Request $request)
+   public function index(Request $request)
     {
         $items = BigQuestion::all();
         return view('bigQuestion', ['items' => $items]);
