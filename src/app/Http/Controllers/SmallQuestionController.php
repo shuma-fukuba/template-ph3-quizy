@@ -10,8 +10,9 @@ class SmallQuestionController extends Controller
 {
     public function index(Request $request) {
         $id = $request->id;
-        $title = BigQuestion::find($id)->name;
-        $small_questions = BigQuestion::find($id)->small_questions;
-        return view('smallQuestion', ['items' => $small_questions, 'title' => $title]);
+        $big_question = BigQuestion::find($id);
+        $title = $big_question->name;
+        $items = $big_question->small_questions;
+        return view('smallQuestion', compact('items', 'title'));
     }
 }

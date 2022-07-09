@@ -10,6 +10,6 @@ class BigQuestionController extends Controller
    public function index(Request $request)
     {
         $items = BigQuestion::all();
-        return view('bigQuestion', ['items' => $items]);
+        return view('bigQuestion', compact('items'));
     }
 }
