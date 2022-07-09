@@ -7,8 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    @foreach ($datas as $data)
-        <div><a href="/quiz/{{$data['id']}}">{{$data['title']}}</a></div>
+    @foreach ($items as $item)
+        <div><a href="{{route('quiz.index', ['id' => $item['id']])}}">{{$item['name']}}</a></div>
     @endforeach
 </body>
 </html>
