@@ -13,11 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/quiz', 'BigQuestionController@index');
+Route::get('/', 'BigQuestionController@index');
 
 Route::get('/quiz/{id}', 'SmallQuestionController@index')->name('quiz.index');
 
