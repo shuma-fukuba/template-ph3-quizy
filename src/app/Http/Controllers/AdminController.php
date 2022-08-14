@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\BigQuestion;
 use App\Http\Requests\BigQuestionRequest;
+use Illuminate\Foundation\Console\Presets\React;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class AdminController extends Controller
 {
@@ -58,6 +60,37 @@ class AdminController extends Controller
     {
         $id = $request->id;
         $item = BigQuestion::find($id);
-        return view('admin.big_question', compact('item'));
+        return view('admin.big_question.index', compact('item'));
+    }
+
+    public function update_big_question_index(Request $request)
+    {
+        $id = $request->id;
+        $item = BigQuestion::find($id);
+        return view('admin.big_question.update', compact('item'));
+    }
+
+    public function update_big_question(Request $request)
+    {
+        $id = $request->id;
+        $name = $request->name;
+        $item = BigQuestion::find($id);
+        $item->name = $name;
+        $item->save();
+        return redirect(route('admin.big_question', compact('id')));
+    }
+
+    public function delete_big_quesiton_index(Request $request)
+    {
+        $id = $request->id;
+        return view('admin.big_question.delete', compact('id'));
+    }
+
+    public function delete_big_question(Request $request)
+    {
+        $id = $request->id;
+        $item = BigQuestion::find($id);
+        $item->delete();
+        return redirect(route('admin.big_questions'));
     }
 }

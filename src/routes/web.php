@@ -28,3 +28,11 @@ Route::post('/admin/big_questions/create', 'AdminController@add_big_questions')-
 Route::get('/admin/big_questions/add', 'AdminController@big_question_add_form')->name('admin.big_question_add_form');
 
 Route::get('/admin/big_questions/{id}', 'AdminController@big_question')->name('admin.big_question');
+
+Route::get('/admin/big_questions/{id}/update', 'AdminController@update_big_question_index')->name('admin.big_question.update.index');
+
+Route::post('/admin/big_questions/{id}/update', 'AdminController@update_big_question')->name('admin.big_question.update');
+
+Route::get('/admin/big_questions/{id}/delete', 'AdminController@delete_big_quesiton_index')->name('admin.big_question.delete.index');
+
+Route::post('/admin/big_questions/{id}/delete', 'AdminController@delete_big_question')->name('admin.big_question.delete');
