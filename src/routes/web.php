@@ -26,3 +26,5 @@ Route::get('/admin/big_questions', 'adminController@get_big_questions')->name('a
 Route::post('/admin/big_questions/create', 'AdminController@add_big_questions')->name('admin.big_question_add');
 
 Route::get('/admin/big_questions/add', 'AdminController@big_question_add_form')->name('admin.big_question_add_form');
+
+Route::get('/admin/big_questions/{id}', 'AdminController@big_question')->name('admin.big_question');

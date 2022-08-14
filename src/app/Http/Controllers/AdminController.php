@@ -53,4 +53,11 @@ class AdminController extends Controller
         ]);
         return redirect(route('admin.big_questions'));
     }
+
+    public function big_question(Request $request)
+    {
+        $id = $request->id;
+        $item = BigQuestion::find($id);
+        return view('admin.big_question', compact('item'));
+    }
 }
