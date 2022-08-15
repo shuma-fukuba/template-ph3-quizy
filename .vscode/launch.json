@@ -9,9 +9,9 @@
                 "name": "Listen for XDebug",
                 "type": "php",
                 "request": "launch",
-                "port": 9000,
+                "port": 9012,
                 "pathMappings": {
-                    "/work/backend": "${workspaceRoot}/src"
+                  "/work/backend": "${workspaceFolder}/src"
                 }
             }
         ]
