@@ -4,7 +4,7 @@ services:
   db:
     container_name: ph3_db_dev
     build:
-      context: ./db
+      context: ./docker/db
     ports:
       - 3306:3306
     volumes:
@@ -18,18 +18,21 @@ services:
   app:
     container_name: ph3_app_dev
     build:
-      context: ./app
+      context: ./docker/app
     volumes:
-      - ../src:/work/backend
+      - ./src:/work/backend
     depends_on: ["db"]
   web:
     container_name: ph3_web_dev
     build:
-      context: ./web
+      context: ./docker/web
     ports:
       - 80:80
     volumes:
-      - ../src:/work/backend
+      - ./src:/work/backend
+      - ./docker/web/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - ./src/public:/var/www/html/laravel/public
+      - ./src/storage:/var/www/html/laravel/public/storage
     depends_on: ["app"]
 
 volumes:
