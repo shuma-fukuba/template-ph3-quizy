@@ -76,5 +76,6 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('js/quizy.js') }}"></script>
 </body>
 </html>
