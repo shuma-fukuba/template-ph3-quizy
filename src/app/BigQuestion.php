@@ -10,6 +10,7 @@ class BigQuestion extends Model
 
 protected $fillable = [
     'name',
+    'order_id'
 ];
 
     public function small_questions() {

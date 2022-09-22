@@ -3,7 +3,8 @@
 @section('content')
     <form action="{{route('admin.big_question_add')}}" method="post">
         @csrf
-        <input type="text" name="name">
+        <input type="text" name="name" placeholder="クイズ名">
+        <input type="text" name="order" placeholder="順番">
         <input type="submit" value="submit">
         @error('name')
         <div class="alert alert-danger">{{ $message }}</div>

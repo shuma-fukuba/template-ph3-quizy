@@ -52,6 +52,7 @@ class AdminController extends Controller
         unset($form['_token']);
         BigQuestion::create([
             'name' => $form['name'],
+            'order_id' => $form['order'],
         ]);
         return redirect(route('admin.big_questions'));
     }
@@ -91,6 +92,14 @@ class AdminController extends Controller
         $id = $request->id;
         $item = BigQuestion::find($id);
         $item->delete();
+        return redirect(route('admin.big_questions'));
+    }
+
+    public function update_big_questions_orde(Request $request)
+    {
+        foreach($request->order as $key => $order) {
+            $post = BigQuestion::find($order['id'])->update(['order' => $order['order']]);
+        }
         return redirect(route('admin.big_questions'));
     }
 }
