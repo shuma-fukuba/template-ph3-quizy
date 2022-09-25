@@ -30,14 +30,16 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $sort = $request->sort;
-        $param = ['sort' => $sort,
-        'user' => $user];
+        $param = [
+            'sort' => $sort,
+            'user' => $user
+        ];
         return view('admin.index', compact('user', 'sort'));
     }
 
     public function get_big_questions(Request $request)
     {
-        $items = BigQuestion::all();
+        $items = BigQuestion::all()->sortBy('order_id');
         return view('admin.big_questions', compact('items'));
     }
 
@@ -52,6 +54,7 @@ class AdminController extends Controller
         unset($form['_token']);
         BigQuestion::create([
             'name' => $form['name'],
+            'order_id' => $form['order'],
         ]);
         return redirect(route('admin.big_questions'));
     }
@@ -91,6 +94,17 @@ class AdminController extends Controller
         $id = $request->id;
         $item = BigQuestion::find($id);
         $item->delete();
+        return redirect(route('admin.big_questions'));
+    }
+
+    public function update_big_questions_order(Request $request)
+    {
+        $form = $request->all();
+        $orders = $form['list-ids'];
+        $orders = explode(',', $orders);
+        foreach ($orders as $key => $order) {
+            $post = BigQuestion::where('order_id', '=', $order)->update(['order_id' => $key + 1]);
+        }
         return redirect(route('admin.big_questions'));
     }
 }
