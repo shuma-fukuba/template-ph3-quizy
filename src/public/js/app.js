@@ -52759,11 +52759,12 @@ __webpack_require__.r(__webpack_exports__);
 
 $(function () {
   $('.sortable').sortable();
-  $('.sortable').disableSelection();
+  var listIds = $('.sortable').sortable('toArray');
+  $('#list-ids').val(listIds);
   $('#submit').on('click', function () {
-    var listIds = $('.sortable').sortable('toArray');
-    $('#list-ids').val(listIds);
-    $('form').trigger('submit');
+    $('form').attr('method', 'post');
+    $('#sort-form').trigger('submit');
+    document.getElementById('sort-form').submit();
   });
 });
 

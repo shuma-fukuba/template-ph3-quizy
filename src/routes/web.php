@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Middleware\TraceLog;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,8 @@ Route::prefix('admin')->group(function () {
 
     Route::post('big_questions/{id}/delete', 'AdminController@delete_big_question')->name('admin.big_question.delete');
 
-    Route::post('/big_questions/order',
-    'AdminController@update_big_questions_order')->name('admin.update_big_questions_order');
+    Route::post(
+        '/big_questions/order',
+        'AdminController@update_big_questions_order'
+    )->name('admin.update_big_questions_order');
 });

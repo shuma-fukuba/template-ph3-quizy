@@ -16,7 +16,7 @@ class CreateBigQuestions extends Migration
         Schema::create('big_questions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('order_id')->unique();
+            $table->integer('order_id');
             $table->timestamps();
         });
     }
