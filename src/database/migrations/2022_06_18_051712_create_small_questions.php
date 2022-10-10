@@ -18,6 +18,7 @@ class CreateSmallQuestions extends Migration
             $table->string('name');
             $table->unsignedBigInteger('big_question_id');
             $table->string('image');
+            $table->integer('order_id');
             $table->timestamps();
 
             $table->foreign('big_question_id')->references('id')->on('big_questions');

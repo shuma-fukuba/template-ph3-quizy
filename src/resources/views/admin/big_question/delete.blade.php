@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <form action="{{route('admin.big_question.delete', ['id' => $id])}}" method="POST">
+        <form action="{{route('admin.big_questions.delete', ['id' => $id])}}" method="POST">
         @csrf
             <input type="submit" value="delete">
         </form>

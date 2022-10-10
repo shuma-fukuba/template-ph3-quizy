@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class SmallQuestion extends Model
 {
     //
-    public function big_questions() {
+
+    protected $fillable = ['image', 'name', 'order_id', 'big_question_id'];
+
+    public function big_questions()
+    {
         return $this->belongsTo("App\BigQuestion");
     }
-
-    public function choices() {
+    public function choices()
+    {
         return $this->hasMany('App\Choice');
     }
 }

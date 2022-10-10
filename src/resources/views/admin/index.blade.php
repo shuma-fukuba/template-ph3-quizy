@@ -18,7 +18,7 @@
                     You are logged in!
                 </div>
                 <div class="card-body">
-                    <a href="{{route('admin.big_questions')}}">問題一覧へ</a>
+                    <a href="{{route('admin.big_questions.index')}}">問題一覧へ</a>
                 </div>
             </div>
         </div>

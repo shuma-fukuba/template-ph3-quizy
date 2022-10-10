@@ -8,12 +8,13 @@ class BigQuestion extends Model
 {
     //
 
-protected $fillable = [
-    'name',
-    'order_id'
-];
+    protected $fillable = [
+        'name',
+        'order_id'
+    ];
 
-    public function small_questions() {
+    public function small_questions()
+    {
         return $this->hasMany('App\SmallQuestion');
     }
 }

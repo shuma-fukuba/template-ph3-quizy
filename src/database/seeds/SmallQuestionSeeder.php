@@ -17,17 +17,19 @@ class SmallQuestionSeeder extends Seeder
             [
                 'name' => 'この地名はなんて読む? 高輪',
                 'image' => 'takanawa.png',
-                'big_question_id' => 1
+                'big_question_id' => 1,
+                'order_id' => 1,
             ],
             [
                 'name' => 'この地名はなんて読む? 亀戸',
                 'image' => 'kameido.png',
-                'big_question_id' => 1
+                'big_question_id' => 1,
+                'order_id' => 2,
             ],
             [
                 'name' => 'この地名はなんて読む? 麹町',
                 'image' => 'koujimachi.png',
-                'big_question_id' => 1
+                'big_question_id' => 1,'order_id' => 3,
             ]
             ];
         DB::table('small_questions')->insert($params);

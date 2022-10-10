@@ -21,28 +21,51 @@ Route::get('/quiz/{id}', 'SmallQuestionController@index')->name('quiz.index');
 
 Auth::routes();
 
+// admin routes
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
+    Route::get('/', 'HomeController@index')->name('index');
 
-Route::prefix('admin')->group(function () {
-    Route::get('/', 'adminController@index')->name('admin');
+    // big questions
+    Route::group(['prefix' => 'big_questions', 'as' => 'big_questions.'], function () {
+        Route::get('/', 'BigQuestionController@index')->name('index');
+        Route::get('/add', 'BigQuestionController@add_form')->name('add_index');
+        Route::post('/add', 'BigQuestionController@add')->name('add');
+        Route::get('/{id}', 'BigQuestionController@big_question')->name('big_question');
+        Route::get('/{id}/update', 'BigQuestionController@update_index')->name('update_index');
+        Route::post('/{id}/update', 'BigQuestionController@udpate')->name('udpate');
+        Route::get('/{id}/delete', 'BigQuestionController@delete_index')->name('delete_index');
+        Route::post('/{id}/delete', 'BigQuestionController@delete')->name('delete');
 
-    Route::get('big_questions', 'adminController@get_big_questions')->name('admin.big_questions');
+        Route::post(
+            '/order',
+            'BigQuestionController@order'
+        )->name('order');
 
-    Route::post('big_questions/create', 'AdminController@add_big_questions')->name('admin.big_question_add');
+        // small questions
+        Route::group(['prefix' => '{big_question_id}/small_questions', 'as' => 'small_questions.'], function () {
+            Route::get('/create', 'SmallQuestionController@create_index')->name('create_index');
+            Route::post('/create', 'SmallQuestionController@create')->name('create');
+            Route::post('/order', 'SmallQuestionController@order')->name('order');
+        });
+    });
 
-    Route::get('/admin/big_questions/add', 'AdminController@big_question_add_form')->name('admin.big_question_add_form');
+    Route::group(['prefix' => 'small_questions', 'as' => 'small_questions.'], function () {
+        Route::get('/{small_question_id}', 'SmallQuestionController@index')->name('small_question'); // 謎にメソッドが未定義になるんご
+        Route::get('/{small_question_id}/edit', 'SmallQuestionController@update_index')->name('update_index');
 
-    Route::get('big_questions/{id}', 'AdminController@big_question')->name('admin.big_question');
+        Route::post('/{small_question_id}/edit', 'SmallQuestionController@update')->name('update');
 
-    Route::get('big_questions/{id}/update', 'AdminController@update_big_question_index')->name('admin.big_question.update.index');
+        Route::get('/{small_question}/delete', 'SmallQuestionController@delete_index')->name('delete_index');
+        Route::post('/{small_question_id}/delete', 'SmallQuestionController@delete')->name('delete');
+    });
 
-    Route::post('big_questions/{id}/update', 'AdminController@update_big_question')->name('admin.big_question.update');
-
-    Route::get('/big_questions/{id}/delete', 'AdminController@delete_big_quesiton_index')->name('admin.big_question.delete.index');
-
-    Route::post('big_questions/{id}/delete', 'AdminController@delete_big_question')->name('admin.big_question.delete');
-
-    Route::post(
-        '/big_questions/order',
-        'AdminController@update_big_questions_order'
-    )->name('admin.update_big_questions_order');
+    Route::group(
+        ['prefix' => 'choices', 'as' => 'choices.'],
+        function () {
+            Route::get('/', 'ChoiceConstroller@index')->name('index');
+            Route::post('/{choice_id}/update', "ChoiceController@update")->name('update');
+            Route::get('/{choice_id}', 'ChoiceController@choice')->name('choice
+        ');
+        }
+    );
 });
